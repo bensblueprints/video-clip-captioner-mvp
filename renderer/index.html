@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Captionly — auto-captions you own forever</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">💬</span>
+      <span>Captionly</span>
+      <span class="brand-sub">Whisper captions + burn-in, pay once</span>
+    </div>
+    <div class="top-actions">
+      <button class="btn" id="openProjectBtn">Open project</button>
+      <button class="btn" id="saveProjectBtn" disabled>Save project</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- start screen -->
+    <section id="startView">
+      <div id="dropzone" class="dropzone">
+        <div class="dz-icon">🎬</div>
+        <div class="dz-title">Drop a video here</div>
+        <div class="dz-sub">or click to browse — MP4, MOV, MKV, WebM</div>
+      </div>
+      <div class="setup-card" id="setupCard" hidden>
+        <div class="setup-row">
+          <div>
+            <div class="setup-title">Local Whisper engine</div>
+            <div class="setup-sub" id="setupStatus">checking…</div>
+          </div>
+          <select id="modelSelect" class="select">
+            <option value="tiny">tiny (78 MB, fastest)</option>
+            <option value="base" selected>base (148 MB, recommended)</option>
+            <option value="small">small (488 MB, accurate)</option>
+          </select>
+          <button class="btn primary" id="setupBtn">Download</button>
+        </div>
+        <div class="progress-outer" id="setupProgress" hidden><div class="progress-inner" id="setupProgressBar"></div></div>
+        <div class="setup-note">One-time download from whisper.cpp releases + Hugging Face. Everything after that runs 100% offline.</div>
+      </div>
+    </section>
+
+    <!-- editor -->
+    <section id="editorView" hidden>
+      <div class="editor-grid">
+        <div class="left-col">
+          <video id="videoPreview" controls></video>
+          <div class="caption-overlay" id="captionOverlay"></div>
+          <div class="transcribe-bar" id="transcribeBar">
+            <button class="btn primary" id="transcribeBtn">🎙 Transcribe</button>
+            <span id="transcribeStatus" class="muted"></span>
+            <div class="progress-outer slim" id="transcribeProgress" hidden><div class="progress-inner" id="transcribeProgressBar"></div></div>
+          </div>
+
+          <div class="style-panel">
+            <h3>Caption style</h3>
+            <div class="preset-row" id="presetRow"></div>
+            <div class="style-controls">
+              <label>Font size <input type="range" id="fontSize" min="24" max="110" value="58"><span id="fontSizeVal">58</span></label>
+              <label>Position
+                <select id="alignment" class="select">
+                  <option value="2">Bottom</option>
+                  <option value="5">Center</option>
+                  <option value="8">Top</option>
+                </select>
+              </label>
+              <label>Highlight <input type="color" id="highlightColor" value="#ffd700"></label>
+              <label class="chk"><input type="checkbox" id="emojiToggle"> Keyword emoji ✨</label>
+            </div>
+          </div>
+
+          <div class="export-panel">
+            <h3>Export</h3>
+            <div class="export-row">
+              <button class="btn primary" id="burnBtn" disabled>🔥 Burn-in MP4</button>
+              <button class="btn" id="srtBtn" disabled>.srt</button>
+              <button class="btn" id="assBtn" disabled>.ass</button>
+            </div>
+            <div class="progress-outer slim" id="burnProgress" hidden><div class="progress-inner" id="burnProgressBar"></div></div>
+            <div id="exportResult" class="muted"></div>
+          </div>
+        </div>
+
+        <div class="right-col">
+          <div class="cues-head">
+            <h3>Transcript <span id="cueCount" class="muted"></span></h3>
+            <span class="muted small">Click a line to edit — timing re-syncs automatically</span>
+          </div>
+          <div id="cueList" class="cue-list">
+            <div class="empty">Transcribe to see your captions here.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
