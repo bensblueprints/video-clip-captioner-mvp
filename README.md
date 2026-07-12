@@ -12,7 +12,7 @@ Submagic charges **$18–39/month** to run Whisper and ffmpeg on your clips. Cap
 
 Don't want to touch a terminal? Grab the packaged Windows installer (and support development):
 
-**→ [Get Captionly on Whop](https://whop.com/onetime-suite)** — pay once, own it forever.
+**→ [Get Captionly on Whop](https://whop.com/benjisaiempire/captionly)** — pay once, own it forever.
 
 ## Features
 
