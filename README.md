@@ -1,5 +1,10 @@
 # 💬 Captionly
 
+## Demo
+
+https://github.com/user-attachments/assets/6c0cacd4-7417-4a71-9288-64d7c5716efb
+
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 **Auto-captions you buy once and own forever.** Drop a video, run Whisper locally for word-level timestamps, pick a caption style (karaoke word-highlight, bold center, classic subtitle), fix any misheard words inline, and burn a ready-to-post MP4 with ffmpeg — 100% on your machine.
