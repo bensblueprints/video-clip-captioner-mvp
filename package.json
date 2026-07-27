@@ -1,7 +1,7 @@
 {
   "name": "captionly",
   "productName": "Captionly",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Captionly — local auto-captions for short-form video. Whisper transcription, styled karaoke/word-highlight captions, ffmpeg burn-in to MP4, SRT/ASS export. Pay once — no Submagic subscription.",
   "main": "main.js",
   "author": "Ben (bensblueprints)",
