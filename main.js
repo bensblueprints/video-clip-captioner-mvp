@@ -9,6 +9,7 @@ const dl = require('./src/lib/download');
 const { transcribeWords } = require('./src/lib/whisper');
 const captions = require('./src/lib/captions');
 const project = require('./src/lib/project');
+const { gateLicense, registerLicenseIpc } = require('./license-gate');
 
 let win = null;
 
@@ -193,7 +194,9 @@ ipcMain.handle('export:burn', async (_e, { videoPath, cues, styleId, overrides, 
 
 ipcMain.handle('shell:showItem', (_e, p) => shell.showItemInFolder(p));
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
+  if (!(await gateLicense())) return; // quit already requested
+  registerLicenseIpc();
   if (process.platform === 'win32') app.setAppUserModelId('com.bensblueprints.captionly');
   createWindow();
   app.on('activate', () => {
